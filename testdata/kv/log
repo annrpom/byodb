@@ -1,1 +1,40 @@
-# Placeholder — commands will be added as the implementation grows.
+open
+----
+ok
+
+set foo bar
+----
+ok
+
+set baz qux
+----
+ok
+
+get foo
+----
+bar
+
+get baz
+----
+qux
+
+delete foo
+----
+ok
+
+get foo
+----
+(not found)
+
+# Reopen and verify state is recovered from the on-disk log.
+open
+----
+ok
+
+get baz
+----
+qux
+
+get foo
+----
+(not found)
